@@ -1,0 +1,431 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="قادرون منصة رقمية شاملة لتمكين الأشخاص ذوي الإعاقة">
+<title>قادرون | Qaderoon</title>
+
+<style>
+:root {
+  --primary: #155b78;
+  --secondary: #e9f3f8;
+  --text: #18344b;
+  --white: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f8fc;
+  color: var(--text);
+  line-height: 1.8;
+  font-size: 16px;
+}
+
+header {
+  background: var(--primary);
+  color: white;
+  padding: 22px;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 34px;
+  margin: 0;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 15px;
+}
+
+button {
+  border: none;
+  border-radius: 10px;
+  padding: 12px 18px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+button:focus, a:focus {
+  outline: 3px solid #e3a52c;
+  outline-offset: 3px;
+}
+
+.language {
+  background: white;
+  color: var(--primary);
+}
+
+.primary {
+  background: var(--primary);
+  color: white;
+}
+
+.secondary {
+  background: var(--secondary);
+  color: var(--primary);
+}
+
+.hero {
+  text-align: center;
+  padding: 65px 20px;
+}
+
+.hero h2 {
+  font-size: 34px;
+}
+
+.hero p {
+  max-width: 750px;
+  margin: 20px auto;
+  font-size: 19px;
+}
+
+section {
+  scroll-margin-top: 20px;
+}
+
+.section-title {
+  text-align: center;
+  padding: 20px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(230px,1fr));
+  gap: 20px;
+  padding: 20px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.card {
+  background: white;
+  border-radius: 18px;
+  padding: 25px;
+  text-align: center;
+  box-shadow: 0 4px 15px #0000000d;
+}
+
+.card h3 {
+  color: var(--primary);
+}
+
+.card button {
+  margin-top: 12px;
+}
+
+.panel {
+  max-width: 800px;
+  margin: 35px auto;
+  padding: 25px;
+  background: white;
+  border-radius: 18px;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 13px;
+  margin: 10px 0;
+  border: 1px solid #b8cbd6;
+  border-radius: 9px;
+  font-size: 16px;
+  font-family: inherit;
+}
+
+textarea {
+  min-height: 110px;
+}
+
+footer {
+  background: var(--primary);
+  color: white;
+  text-align: center;
+  padding: 25px;
+  margin-top: 40px;
+}
+
+#status {
+  text-align: center;
+  padding: 10px;
+}
+
+.high-contrast {
+  background: #000 !important;
+  color: #fff !important;
+}
+
+.high-contrast .card,
+.high-contrast .panel {
+  background: #171717;
+  color: white;
+}
+
+.high-contrast h3 {
+  color: #ffeb3b;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>قادرون | Qaderoon</h1>
+  <p id="tagline">القدرة حق للجميع</p>
+
+  <nav>
+    <button class="language" onclick="setLanguage('ar')">العربية</button>
+    <button class="language" onclick="setLanguage('en')">English</button>
+  </nav>
+</header>
+
+<main>
+
+<section class="hero">
+  <h2 id="welcome">أهلاً بك في قادرون</h2>
+
+  <p id="intro">
+    منصة مستقلة تهدف إلى تمكين الأشخاص ذوي الإعاقة
+    وتوفير بيئة رقمية شاملة تدعم الاستقلال والتواصل والمشاركة.
+  </p>
+
+  <button class="primary" id="discover"
+  onclick="goTo('services')">
+    اكتشف قادرون
+  </button>
+</section>
+
+<section id="accessibility">
+  <h2 class="section-title" id="accessTitle">أدوات الوصول الشامل</h2>
+
+  <div class="cards">
+    <div class="card">
+      <h3 id="fontTitle">حجم الخط</h3>
+      <button class="secondary" onclick="changeFont(2)">تكبير +</button>
+      <button class="secondary" onclick="changeFont(-2)">تصغير -</button>
+    </div>
+
+    <div class="card">
+      <h3 id="contrastTitle">التباين</h3>
+      <button class="secondary" onclick="toggleContrast()"
+      id="contrastButton">تفعيل التباين العالي</button>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <h2 class="section-title" id="servicesTitle">خدمات قادرون</h2>
+
+  <div class="cards">
+
+    <div class="card">
+      <h3 id="aiTitle">🤖 المساعد الذكي</h3>
+      <p id="aiText">مساعد رقمي لتوجيه المستخدم والوصول للمعلومات.</p>
+      <button class="primary" onclick="goTo('assistant')"
+      id="aiButton">اكتشف المساعد</button>
+    </div>
+
+    <div class="card">
+      <h3 id="communityTitle">🤝 التواصل والدعم</h3>
+      <p id="communityText">مساحة لتبادل التجارب والخبرات.</p>
+      <button class="primary" onclick="goTo('community')"
+      id="communityButton">اكتشف المساحة</button>
+    </div>
+
+    <div class="card">
+      <h3 id="institutionTitle">🏢 المؤسسات</h3>
+      <p id="institutionText">بوابة للتعاون والشراكة المؤسسية.</p>
+      <button class="primary" onclick="goTo('institutions')"
+      id="institutionButton">اكتشف التعاون</button>
+    </div>
+
+    <div class="card">
+      <h3 id="accessCardTitle">♿ الوصول الشامل</h3>
+      <p id="accessCardText">تجربة رقمية تراعي احتياجات المستخدمين المختلفة.</p>
+      <button class="primary" onclick="goTo('accessibility')"
+      id="accessCardButton">أدوات الوصول</button>
+    </div>
+
+  </div>
+</section>
+
+<section id="assistant" class="panel">
+  <h2 id="assistantTitle">🤖 مساعد قادرون</h2>
+  <p id="assistantDescription">
+    أهلاً بك! كيف يمكننا مساعدتك؟
+  </p>
+
+  <input id="question" type="text"
+  placeholder="اكتب سؤالك هنا..." />
+
+  <button class="primary" onclick="askAssistant()"
+  id="askButton">إرسال</button>
+
+  <p id="answer" aria-live="polite"></p>
+  <p id="aiNotice">
+    هذه نسخة تجريبية بقدرات محدودة وليست متصلة بنموذج ذكاء اصطناعي بعد.
+  </p>
+</section>
+
+<section id="community" class="panel">
+  <h2 id="communitySectionTitle">مساحة التواصل</h2>
+  <p id="communityDescription">
+    نؤمن أن مشاركة التجارب تساعد على بناء مجتمع أكثر تفهماً.
+  </p>
+
+  <textarea id="experience"
+  placeholder="شاركنا اقتراحك أو تجربتك..."></textarea>
+
+  <button class="primary" onclick="sendExperience()"
+  id="shareButton">إرسال المشاركة</button>
+
+  <p id="communityStatus" aria-live="polite"></p>
+  <p id="privacyNote">
+    المشاركة هنا تجريبية ومحلية، ولا يتم إرسالها إلى خادم.
+  </p>
+</section>
+
+<section id="institutions" class="panel">
+  <h2 id="institutionSectionTitle">بوابة المؤسسات</h2>
+  <p id="institutionDescription">
+    ندعو المؤسسات للمشاركة في بناء بيئة أكثر شمولاً وإتاحة.
+  </p>
+  <button class="primary" onclick="goTo('community')"
+  id="contactButton">تواصل معنا</button>
+</section>
+
+</main>
+
+<footer>
+  <h3>Qaderoon | قادرون</h3>
+  <p id="footerText">القدرة حق للجميع، والإتاحة حق للجميع.</p>
+</footer>
+
+<script>
+
+let currentFont = 16;
+let currentLanguage = 'ar';
+
+function goTo(id) {
+  document.getElementById(id).scrollIntoView({
+    behavior: 'smooth'
+  });
+}
+
+function changeFont(amount) {
+  currentFont = Math.max(12, Math.min(28, currentFont + amount));
+  document.body.style.fontSize = currentFont + 'px';
+}
+
+function toggleContrast() {
+  document.body.classList.toggle('high-contrast');
+}
+
+function askAssistant() {
+  const question = document.getElementById('question').value.trim();
+  const answer = document.getElementById('answer');
+
+  if (!question) {
+    answer.textContent = currentLanguage === 'ar'
+      ? 'من فضلك اكتب سؤالك أولاً.'
+      : 'Please enter your question first.';
+    return;
+  }
+
+  answer.textContent = currentLanguage === 'ar'
+    ? 'شكراً لسؤالك! المساعد الذكي الكامل قيد التطوير. يمكنك استخدام قسم التواصل للحصول على الدعم.'
+    : 'Thank you! The full AI assistant is under development. You can use the community section for support.';
+}
+
+function sendExperience() {
+  const experience = document.getElementById('experience').value.trim();
+  const status = document.getElementById('communityStatus');
+
+  if (!experience) {
+    status.textContent = currentLanguage === 'ar'
+      ? 'اكتب مشاركتك أولاً.'
+      : 'Please write your contribution first.';
+    return;
+  }
+
+  status.textContent = currentLanguage === 'ar'
+    ? 'شكراً لمشاركتك! هذه نسخة تجريبية ولا يتم حفظ المشاركة.'
+    : 'Thank you! This is a demo and your contribution is not saved.';
+
+  document.getElementById('experience').value = '';
+}
+
+const translations = {
+  en: {
+    tagline: 'Ability is a right for everyone',
+    welcome: 'Welcome to Qaderoon',
+    intro: 'An independent platform empowering people with disabilities through inclusion, accessibility, communication and participation.',
+    discover: 'Explore Qaderoon',
+    accessTitle: 'Accessibility Tools',
+    fontTitle: 'Font Size',
+    contrastTitle: 'Contrast',
+    contrastButton: 'Enable high contrast',
+    servicesTitle: 'Qaderoon Services',
+    aiTitle: '🤖 AI Assistant',
+    aiText: 'A digital assistant to help users find information.',
+    aiButton: 'Explore Assistant',
+    communityTitle: '🤝 Community Support',
+    communityText: 'A space for sharing experiences and knowledge.',
+    communityButton: 'Explore Community',
+    institutionTitle: '🏢 Institutions',
+    institutionText: 'A gateway for institutional collaboration.',
+    institutionButton: 'Explore Partnership',
+    accessCardTitle: '♿ Accessibility',
+    accessCardText: 'A digital experience designed for different user needs.',
+    accessCardButton: 'Accessibility Tools',
+    assistantTitle: '🤖 Qaderoon Assistant',
+    assistantDescription: 'Welcome! How can we help you?',
+    askButton: 'Send',
+    aiNotice: 'This is a limited demo and is not connected to an AI model yet.',
+    communitySectionTitle: 'Community Space',
+    communityDescription: 'Sharing experiences helps build a more understanding community.',
+    shareButton: 'Submit',
+    privacyNote: 'This is a local demo. Your contribution is not sent to a server.',
+    institutionSectionTitle: 'Institution Portal',
+    institutionDescription: 'We invite institutions to help build a more inclusive and accessible environment.',
+    contactButton: 'Contact Us',
+    footerText: 'Ability and accessibility are rights for everyone.'
+  }
+};
+
+function setLanguage(lang) {
+  currentLanguage = lang;
+
+  document.documentElement.lang = lang;
+  document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+
+  if (lang === 'ar') {
+    location.reload();
+    return;
+  }
+
+  Object.keys(translations.en).forEach(id => {
+    const element = document.getElementById(id);
+    if (element) element.textContent = translations.en[id];
+  });
+
+  document.getElementById('question').placeholder = 'Write your question here...';
+  document.getElementById('experience').placeholder = 'Share your experience or suggestion...';
+}
+
+</script>
+
+</body>
+</html>
